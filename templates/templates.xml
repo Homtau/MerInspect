@@ -98,7 +98,7 @@
                 <Scripts>
                     <OnLoad>
                         self:SetScale(0.85)
-                        self.ItemLevel:SetFont(self.ItemLevel:GetFont(), 14, "THINOUTLINE")
+                        self.ItemLevel:SetFont(self.ItemLevel:GetFont(), 14, "OUTLINE")
                     </OnLoad>
                 </Scripts>
             </Frame>

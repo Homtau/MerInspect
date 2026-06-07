@@ -44,12 +44,12 @@ if ns.GameVersion < 50000 then
             frame.classicon:SetAlpha(0.6)
             frame.classicon:SetTexture("Interface\\TargetingFrame\\UI-Classes-Circles")
             frame.spectext = frame:CreateFontString(nil, "BORDER")
-            frame.spectext:SetFont(STANDARD_TEXT_FONT, 11, "THINOUTLINE")
+            frame.spectext:SetFont(STANDARD_TEXT_FONT, 11, "OUTLINE")
             frame.spectext:SetTextColor(1, .82, 0)
             frame.spectext:SetPoint("CENTER", frame.specicon, "CENTER")
             frame.spectext:SetJustifyH("CENTER")
             frame.points = frame:CreateFontString(nil, "BORDER")
-            frame.points:SetFont(STANDARD_TEXT_FONT, 11, "THINOUTLINE")
+            frame.points:SetFont(STANDARD_TEXT_FONT, 11, "OUTLINE")
             frame.points:SetPoint("BOTTOM", frame.specicon, "BOTTOM", 0, -4)
             frame.points:SetJustifyH("CENTER")
         end
@@ -81,7 +81,7 @@ else
             frame.specicon:SetPoint("TOPRIGHT", -10, -11)
             frame.specicon:SetMask("Interface\\Masks\\CircleMaskScalable")
             frame.spectext = frame:CreateFontString(nil, "BORDER")
-            frame.spectext:SetFont(SystemFont_Outline_Small:GetFont(), 10, "THINOUTLINE")
+            frame.spectext:SetFont(SystemFont_Outline_Small:GetFont(), 10, "OUTLINE")
             frame.spectext:SetPoint("BOTTOM", frame.specicon, "BOTTOM")
             frame.spectext:SetJustifyH("CENTER")
         end

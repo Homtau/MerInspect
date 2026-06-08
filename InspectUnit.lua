@@ -61,7 +61,7 @@ local function GetInspectItemListFrame(parent)
         frame.title:SetPoint("TOPLEFT", frame, "TOPLEFT", 66, -18)
         frame.level = frame:CreateFontString(nil, "ARTWORK", itemfont)
         frame.level:SetPoint("TOPLEFT", frame, "TOPLEFT", 66, -42)
-        frame.level:SetFont(frame.level:GetFont(), 12, "OUTLINE")
+        frame.level:SetFont(frame.level:GetFont(), 12, "THINOUTLINE")
 
         local itemframe
         local fontsize = locale:sub(1,2) == "zh" and 12 or 9
@@ -91,7 +91,7 @@ local function GetInspectItemListFrame(parent)
             itemframe.label:SetBackdropBorderColor(0, 0.9, 0.9, 0.2)
             itemframe.label:SetBackdropColor(0, 0.9, 0.9, 0.2)
             itemframe.label.text = itemframe.label:CreateFontString(nil, "ARTWORK")
-            itemframe.label.text:SetFont(UNIT_NAME_FONT, fontsize, "OUTLINE")
+            itemframe.label.text:SetFont(UNIT_NAME_FONT, fontsize, "THINOUTLINE")
             itemframe.label.text:SetSize(34, 14)
             itemframe.label.text:SetPoint("CENTER", 1, 0)
             itemframe.label.text:SetText(v.name)
@@ -100,7 +100,7 @@ local function GetInspectItemListFrame(parent)
             itemframe.levelString:SetPoint("LEFT", itemframe.label, "RIGHT", 4, 0)
             itemframe.levelString:SetJustifyH("RIGHT")
             itemframe.itemString = itemframe:CreateFontString(nil, "ARTWORK", itemfont)
-            itemframe.itemString:SetFont(itemframe.itemString:GetFont(), 13, "OUTLINE")
+            itemframe.itemString:SetFont(itemframe.itemString:GetFont(), 13)
             itemframe.itemString:SetHeight(16)
             itemframe.itemString:SetPoint("LEFT", itemframe.levelString, "RIGHT", 2, 0)
             itemframe:SetScript("OnEnter", function(self)
@@ -248,12 +248,12 @@ end)
 
 LibEvent:attachTrigger("INSPECT_FRAME_SHOWN", function(self, frame, parent, ilevel)
     local x, y, f = 0, 0, parent:GetName()
-    if ((f == "PaperDollFrame" or f == "InspectFrame") and parent:GetHeight() > 500) then
+    if (f == "InspectFrame" or f == "PaperDollFrame") and ns.GameVersion < 40000 then
         x, y = 33, 14
     end
     -- SoD rune frame
     if (f == "PaperDollFrame" and EngravingFrame and EngravingFrame:IsVisible()) then
-        x = x - 211
+        x = -178
     end
     local backdrop = frame:GetBackdrop()
     if (MerInspectDB and MerInspectDB.ShowInspectAngularBorder) then
@@ -335,7 +335,7 @@ LibEvent:attachTrigger("TogglePlayerStatsFrame", function(self, frame, bool, for
             PlayerStatsFrame:SetStats(stats):Show()
             if (frame.inspectFrame and frame.inspectFrame:IsShown()) then
                 PlayerStatsFrame:SetPoint("TOPLEFT", frame.inspectFrame, "TOPRIGHT", 1, 0)
-            elseif (not frame:GetName()) or (frame == PaperDollFrame and frame:GetHeight() < 500) then
+            elseif (not frame:GetName()) or (frame == PaperDollFrame and ns.GameVersion > 40000) then
                 PlayerStatsFrame:SetPoint("TOPLEFT", frame, "TOPRIGHT", 1, 0)
             else
                 PlayerStatsFrame:SetPoint("TOPLEFT", frame, "TOPRIGHT", -32, -14)
